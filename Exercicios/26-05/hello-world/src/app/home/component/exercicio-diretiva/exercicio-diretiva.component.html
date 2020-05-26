@@ -1,0 +1,25 @@
+<ul class="list-group">
+    <li class="list-group-item"
+        *ngFor="let valor of valores, let i = index;">
+
+        {{valor.cnpj | cnpjCustom}} - {{valor.saldo | currency:'BRL'}}
+    </li>
+    
+</ul>
+<br>
+<div class="container">
+    <form>
+        <div class="form-group">
+        <label for="txCNPJ">CNPJ</label>
+        <input type="text" class="form-control" [(ngModel)]="cnpjAdd" name="txCNPJ" id="txCNPJ" placeholder="Novo CNPJ">
+        
+        </div>
+        <div class="form-group">
+        <label for="txSaldo">Saldo</label>
+        <input type="text" decimalMask="999.999.999,99" [(ngModel)]="saldoAdd"
+        (ngModelChange)="actionDecimalMask($event)" name="txSaldo"
+         class="form-control" id="txSaldo" placeholder="Novo Saldo">
+        </div>
+        <button type="submit" (click)="addForm()" class="btn btn-primary">Incluir</button>
+    </form>
+</div>
